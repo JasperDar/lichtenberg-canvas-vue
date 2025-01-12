@@ -253,24 +253,7 @@ const startAnimation = () : void => {
 </script>
 
 <template>
-    <div class="lichtenberg-canvas">
+    <div style="pointer-events: none; position: fixed; bottom: 0; left: 0; right: 0; top: 0; mask-image: radial-gradient(circle, transparent, black); --webkit-mask-image: radial-gradient(circle, transparent, black);">
         <canvas ref="canvas" />
     </div>
 </template>
-
-<style scoped>
-.lichtenberg-canvas {
-    pointer-events: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    mask-image: radial-gradient(circle, transparent, black);
-    --webkit-mask-image: radial-gradient(circle, transparent, black);
-
-    @media print {
-        visibility: hidden;
-    }
-}
-</style>

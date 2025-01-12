@@ -22,12 +22,6 @@ import { LichtenbergCanvas } from 'lichtenberg-canvas-vue';
 </script>
 
 <template>
-    <div>
-        <LichtenbergCanvas />
-    </div>
+    <LichtenbergCanvas />
 </template>
-
-<script scoped>
-@import 'lichtenberg-canvas-vue/style.css';
-</script>
 ```
