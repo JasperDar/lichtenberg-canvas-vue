@@ -2,7 +2,7 @@
 
 A Vue.js component for generating Lichtenberg figures on a canvas.
 
-Based on work from @antfu
+Based on work from [@antfu](https://github.com/antfu)
 
 ## Showcase
 
