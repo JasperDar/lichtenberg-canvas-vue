@@ -47,6 +47,10 @@ const props = defineProps({
         type: Number,
         default: 40,
     },
+    maximumActiveSegments: {
+        type: Number,
+        default: 1000,
+    },
 });
 
 const canvas = ref<HTMLCanvasElement|null>(null);
@@ -162,6 +166,8 @@ const generateNewSegments = (startX: number, startY: number, angle: number, dept
     // Calculate rate based on depth and amount of branches
     const branchChancePercentage = calculateBranchChancePercentage(depth);
 
+    console.log(branchChancePercentage);
+
     for (let i = 0; i < props.forkAmount; i++) {
         if (Math.random() > branchChancePercentage) {
             continue;
@@ -179,10 +185,21 @@ const degreesToRadians = (degrees: number) : number => {
 };
 
 const calculateBranchChancePercentage = (depth: { value: number; }) : number => {
+    // If the amount of active branches gets out of hand, we want to slow it down
+    // This avoids page crashes
+    if (segments.value.length >= props.maximumActiveSegments) {
+        return 0.05;
+    }
+
     // Target depth reached, we can fade out generation
     // Amount of branches generated * percentage chance should be 0.5 or less
     if (depth.value > props.targetDepth) {
         return Math.max(0.5, (1 / props.forkAmount));
+    }
+
+    // We want to give the branch generation a little boost at the start
+    if (depth.value < 25) {
+        return (1.4 / props.forkAmount);
     }
 
     // Target depth not yet reached, we want to generate branches more liberally

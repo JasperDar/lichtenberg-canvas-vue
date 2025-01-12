@@ -1,7 +1,7 @@
 {
   "name": "lichtenberg-canvas-vue",
   "private": false,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Jasper Dar",
   "license": "MIT",
   "description": "A Vue.js component to render Lichtenberg figure-like effects in the background.",
